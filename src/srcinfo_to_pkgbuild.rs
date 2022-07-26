@@ -1,17 +1,18 @@
 use crate::terminal_util::escape_bash_arg;
 use srcinfo::ArchVec;
 use srcinfo::Srcinfo;
+use std::fmt::Write;
 use std::path::Path;
 
 fn push_field(pkgbuild: &mut String, key: &str, value: &str) {
-	pkgbuild.push_str(&format!("{}={}\n", key, escape_bash_arg(value)));
+	writeln!(pkgbuild, "{}={}", key, escape_bash_arg(value)).unwrap();
 }
 
 fn push_array(pkgbuild: &mut String, key: &str, values: &[String]) {
-	pkgbuild.push_str(&format!("{}=(", key));
+	write!(pkgbuild, "{}=(", key).unwrap();
 
 	for value in values {
-		pkgbuild.push_str(&format!("\n  {}", escape_bash_arg(value)))
+		write!(pkgbuild, "\n  {}", escape_bash_arg(value)).unwrap();
 	}
 
 	pkgbuild.push_str(")\n");
