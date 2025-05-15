@@ -39,7 +39,7 @@ impl RuaPaths {
 	/// Only use for actions that require `makepkg` execution,
 	/// because it does root and single-instance checks as well.
 	pub fn initialize_paths() -> RuaPaths {
-		if unsafe { libc::geteuid() } == 0 {
+		if rustix::process::geteuid().is_root() {
 			eprintln!("RUA does not allow building as root.");
 			eprintln!("Also, makepkg will not allow you building as root anyway.");
 			exit(1)

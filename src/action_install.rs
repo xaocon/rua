@@ -16,6 +16,7 @@ use std::collections::HashSet;
 use std::fs;
 use std::fs::ReadDir;
 use std::path::PathBuf;
+use rustix::io::Errno;
 
 pub fn install(targets: &[String], rua_paths: &RuaPaths, is_offline: bool, asdeps: bool) {
 	let alpm = new_alpm_wrapper();
@@ -253,7 +254,7 @@ pub fn check_tars_and_move(name: &str, rua_paths: &RuaPaths, archive_whitelist: 
 				// RUA pull request: https://github.com/vn971/rua/pull/109
 				// coreutils copying: https://github.com/coreutils/coreutils/blob/9b4bb9d28a6a5f84c407f795d518726fd7902121/src/copy.c#L2466
 
-				if err.raw_os_error() != Some(libc::EXDEV) {
+				if Errno::from_io_error(&err) != Some(Errno::XDEV) {
 					// EXDEV (invalid cross-device link) gets aggregated into io::ErrorKind::Other
 					return Err(err);
 				}
