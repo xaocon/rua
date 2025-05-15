@@ -12,11 +12,11 @@ use indexmap::IndexSet;
 use itertools::Itertools;
 use log::debug;
 use log::trace;
+use rustix::io::Errno;
 use std::collections::HashSet;
 use std::fs;
 use std::fs::ReadDir;
 use std::path::PathBuf;
-use rustix::io::Errno;
 
 pub fn install(targets: &[String], rua_paths: &RuaPaths, is_offline: bool, asdeps: bool) {
 	let alpm = new_alpm_wrapper();
