@@ -25,31 +25,31 @@ structopt = "0.3.26"
 libscmp = "0.2.0"
 
 [dependencies]
-alpm = { version = "2",       default-features = false, features = [], optional = true }
+alpm = { version = "4",       default-features = false, features = [], optional = true }
 anyhow = { version = "1",    default-features = false, features = ["std", "backtrace"] }
-chrono = { version = "0.4.31",    default-features = false, features = ["std", "clock"] }
-colored = "2"
-directories = "5.0.1"
-env_logger = "0.10.1"
-fs2 = "0.4.3"
+chrono = { version = "0.4",    default-features = false, features = ["std", "clock"] }
+colored = "3"
+directories = "6"
+env_logger = "0.11"
+fs2 = "0.4"
 fs_extra = "1"
-indexmap = { version = "1",   default-features = false }
-itertools = { version = "0.11.0", default-features = false, features = ["use_std"] }
+indexmap = { version = "2",   default-features = false }
+itertools = { version = "0.14", default-features = false, features = ["use_std"] }
 lazy_static = "1"
 rustix = { version = "1",   features=["process"] }
 libflate = "2"
-log = { version = "0.4.20",       default-features = false }
-prettytable-rs = "0.10.0"
+log = { version = "0.4",       default-features = false }
+prettytable-rs = "0.10"
 raur = { version = "7",       default-features = false, features = ["blocking", "rustls-tls"] }
 regex = { version = "1",      default-features = false, features = ["perf"] }
-rm_rf = "0.6.2"
-ruzstd = "0.4.0"
+rm_rf = "0.6"
+ruzstd = "0.8"
 srcinfo = "1"
-structopt = "0.3.26"
-tar = { version = "0.4.40",       default-features = false }
-termize = "0.1.1"
-uname = "0.1.1"
-xz2 = "0.1.7"
+structopt = "0.3"
+tar = { version = "0.4",       default-features = false }
+termize = "0.1"
+uname = "0.1"
+xz2 = "0.1"
 
 [profile.release]
 lto = "thin"
